@@ -1,0 +1,204 @@
+/* ============================================================
+   🌿 VARIABLES GLOBALES (:root)
+   - Cette section définit les couleurs, dimensions et effets utilisés dans toute la page.
+   - Elle permet d'assurer une cohérence visuelle et de faciliter la maintenance du code.
+   - Chaque variable peut être réutilisée ensuite avec la syntaxe var(--nom).
+   ============================================================ */
+:root {
+    /* 🎨 Couleurs principales */
+    --primary: #198754;         /* Couleur principale (boutons, éléments clés) */
+    --text: #0f172a;           /* Couleur de texte standard */
+    --muted: #475569;          /* Couleur de texte atténuée (menus, sous-titres) */
+    --bg: #ffffff;             /* Couleur de fond principale (blanc) */
+    --bg-soft: #f1f5f9;        /* Couleur de fond douce (pied de page) */
+    --border-light: #dddddd;   /* ✅ Couleur factorisée pour les bordures */
+    --shadow: 0 10px 25px rgba(0, 0, 0, .08); /* ✅ Ombre douce utilisée sur les cartes */
+
+    /* 🧭 Mise en page */
+    --radius: 18px;   /* Rayon d'arrondi commun pour coins doux */
+    --maxw: 1100px;   /* Largeur maximale centrale du contenu */
+    --nav-h: 64px;    /* Hauteur standard de la barre de navigation */
+}
+
+/* ============================================================
+   📝 STYLE GLOBAL DU DOCUMENT (BODY)
+   - Réinitialise les marges par défaut et applique la police globale.
+   - Définit les couleurs de fond et de texte pour toute la page.
+   - Fixe une largeur de base à 100 % pour occuper tout l'écran.
+   ============================================================ */
+body {
+    margin: 0;  /* Supprime les marges par défaut du navigateur */
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    color: var(--text);      /* Texte en couleur principale */
+    background: var(--bg);   /* Fond blanc global */
+    width: 100%;            /* S'assure que le body occupe toute la largeur */
+}
+
+
+/* ============================================================
+   SECTION 1 : ENTÊTE DE LA PAGE (HEADER + MENU DE NAVIGATION)
+   - Cette section reste toujours visible en haut grâce au positionnement fixe.
+   - Elle contient le nom ou logo à gauche et le menu de navigation à droite.
+   - On y gère la barre supérieure, la disposition horizontale et les liens.
+   ============================================================ */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--bg);   /* ✅ blanc factorisé */
+    z-index: 50;
+    height: var(--nav-h);
+    border-bottom: 1px solid var(--border-light);  /* ✅ gris clair factorisé */
+}
+
+.entete {
+    max-width: var(--maxw);
+    margin: auto;
+    padding: 1px;
+    display: flex;                /* ✅ Disposition horizontale : nom + menu */
+    align-items: center;          /* ✅ Centrage vertical des éléments */
+    justify-content: space-between; /* ✅ Nom à gauche / Menu à droite */
+    height: var(--nav-h);
+}
+
+.brand {
+    font-weight: 800;
+    font-size: 1.25rem;
+}
+
+/* ---------- Liens de navigation ---------- */
+a {
+    color: inherit;            /* Hérite de la couleur du parent */
+    text-decoration: none;     /* Supprime le soulignement par défaut */
+}
+
+nav ul {
+    list-style: none;          /* Supprime les puces de la liste */
+    margin: 0;
+    padding: 0;
+    display: flex;             /* Menu horizontal */
+    gap: 12px;                 /* Espacement entre les éléments */
+}
+
+nav a {
+    padding: 10px 14px;        /* Agrandit la zone cliquable */
+    font-weight: 600;          /* Texte en semi-gras */
+    color: var(--muted);       /* Couleur de base du menu */
+}
+
+nav a:hover {
+    color: var(--text);        /* Couleur au survol */
+}
+
+
+
+/* ============================================================
+   SECTION 2 : CONTENU PRINCIPAL
+   - Contient toutes les sections centrales de la page : Accueil → Contact.
+   - Sert à limiter la largeur du contenu et à le centrer dans la fenêtre.
+   - On ajoute un peu d’espace intérieur pour la lisibilité.
+   ============================================================ */
+.conteneur_principal {
+    max-width: var(--maxw);
+    margin: auto;
+    padding: 16px;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+    height: auto
+}
+
+.hero {
+    margin-top: var(--nav-h);
+    text-align: center;
+    padding: 80px 20px;
+    background: #eee
+}
+.hero h1 {
+    margin-bottom: 10px
+}
+
+.hero .cta {
+    margin-top: 18px
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 12px;
+    font-weight: 700
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: #fff
+}
+#about img {
+    border-radius: var(--radius);
+    box-shadow: var(--shadow)
+}
+
+.cards {
+    display: grid;
+    gap: 24px
+}
+@media (min-width: 768px) {
+    .cards {
+        grid-template-columns: repeat(3, 1fr)
+    }
+}
+
+.card {
+    background: var(--bg);
+    border: 1px solid #ddd;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    height: 100%
+}
+.card-body {
+    padding: 22px
+}
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover
+}
+form {
+    display: grid;
+    gap: 12px
+}
+input,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc
+}
+
+.important {
+    font-weight: bold;
+    color: #d62828
+}
+/* ============================================================
+   SECTION 3 : PIED DE PAGE (FOOTER)
+   - Zone finale de la page contenant les mentions légales et les liens sociaux.
+   - Utilise un fond doux pour se démarquer du contenu principal.
+   - Centrage du texte pour un aspect propre et équilibré.
+   ============================================================ */
+footer {
+    background: var(--bg-soft);
+    padding: 28px 0;
+    margin-top: 32px;
+    text-align: center;
+}
+
+.social {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap
+}
